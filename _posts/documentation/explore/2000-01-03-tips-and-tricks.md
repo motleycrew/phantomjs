@@ -11,9 +11,15 @@ PhantomJS does not set the background color of the web page at all, it is left t
 
 To force a certain color for the web page background, use the following code:
 
+
 ```javascript
 page.evaluate(function() {
   document.body.bgColor = 'white';
+   var style = document.createElement('style'),
+                text = document.createTextNode('body { background: #fff }');
+    style.setAttribute('type', 'text/css');
+    style.appendChild(text);
+    document.head.appendChild(style);
 });
 ```
 
